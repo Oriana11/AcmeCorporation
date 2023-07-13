@@ -1,0 +1,41 @@
+@page "/AllDraws"
+@layout MainLayout
+@using Acme.Shared.Dtos
+@using Acme.Web.Services
+@inject IDrawService DrawService
+
+<h3 style="margin: 20px">All Draws</h3>
+
+@if (draws is null)
+{
+    <MudProgressCircular Color="Color.Success" Indeterminate="true" />
+}
+else
+{
+    <MudTable Items="@draws" Hover="true" Breakpoint="Breakpoint.Sm">
+        <HeaderContent>
+            <MudTh>Id</MudTh>
+            <MudTh>First name</MudTh>
+            <MudTh>Last name</MudTh>
+            <MudTh>Email</MudTh>
+            <MudTh>Serial number</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Nr">@context.Id</MudTd>
+            <MudTd DataLabel="Sign">@context.FirstName</MudTd>
+            <MudTd DataLabel="Name">@context.LastName</MudTd>
+            <MudTd DataLabel="Position" >@context.Email</MudTd>
+            <MudTd DataLabel="Molar mass">@context.SerialNumber.Guid</MudTd>
+        </RowTemplate>
+    </MudTable>
+}
+
+@code {
+    private List<DrawReadDto> draws; 
+    
+    protected override async Task OnInitializedAsync()
+    {
+        draws = await DrawService.GetAllDrawsAsync();
+    }
+
+}

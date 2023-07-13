@@ -1,0 +1,80 @@
+body {
+    padding-top: 10px;
+}
+
+h1 {
+    font-size: 70px;
+}
+
+.navbar {
+    background-color: #333;
+    font-family: 'Roboto', sans-serif;
+    height: 75px;
+}
+
+.navbar-brand {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    margin-left: 20px;
+}
+
+.navbar-nav .nav-link {
+    color: #fff;
+    font-weight: 500;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffcc00;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler-icon {
+    background-color: #fff;
+}
+
+.navbar-collapse {
+    background-color: #333;
+}
+
+.product-card img {
+    width: 40%;
+    height: 60%;
+}
+
+.custom-btn {
+    width: 100%;
+}
+
+.price-color {
+    color: #890f01;
+    font-weight: bold;
+}
+
+.color-offer {
+    color: darkred;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+.banner {
+    background-color: #1bc47b;
+    padding: 75px;
+    text-align: center;
+    margin-top: 0
+}
+
+.banner p {
+    margin: 0;
+    color: white;
+    font-weight: bold;
+    font-size: 155%;
+}
+
+.products-text {
+    font-weight: bold;
+}
+
