@@ -4,7 +4,7 @@
 @using Acme.Web.Services
 @inject IDrawService DrawService
 
-<h3 style="margin: 20px">All Draws</h3>
+<MudText Typo="Typo.h4" Class="mx-7">All Draws </MudText> <!--Table-->
 
 @if (draws is null)
 {
@@ -12,7 +12,7 @@
 }
 else
 {
-    <MudTable Items="@draws" Hover="true" Breakpoint="Breakpoint.Sm">
+    <MudTable Items="@draws" Hover="true" Breakpoint="Breakpoint.Sm" class="mx-7">
         <HeaderContent>
             <MudTh>Id</MudTh>
             <MudTh>First name</MudTh>
@@ -31,9 +31,9 @@ else
 }
 
 @code {
-    private List<DrawReadDto> draws; 
+    private List<DrawReadDto> draws; // define a list of draws dto
     
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync()  // components initialized, fetch all the data
     {
         draws = await DrawService.GetAllDrawsAsync();
     }

@@ -16,10 +16,10 @@ public class DrawLogic : IDrawLogic
     }
     
     
-    public Task<Draw> CreateDrawAsync(Draw draw)
+    public async Task<Draw> CreateDrawAsync(Draw draw)
     {
         ValidateDraw(draw);
-        var createdDraw = _drawRepository.CreateDrawAsync(draw);
+        var createdDraw = await _drawRepository.CreateDrawAsync(draw);
         return createdDraw;
     }
 

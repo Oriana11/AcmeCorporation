@@ -10,7 +10,7 @@ public class DrawRepository : IDrawRepository
 {
     private readonly AcmeOnlineDbContext _context;
 
-    public DrawRepository(AcmeOnlineDbContext context)
+    public DrawRepository(AcmeOnlineDbContext context) // dependency injection
     {
         _context = context;
     }
@@ -19,13 +19,13 @@ public class DrawRepository : IDrawRepository
     {
         await _context.Draws.AddAsync(draw);
         await _context.SaveChangesAsync();
-        return draw;
+        return draw; // return draw with the ID. Now it is stored in the database
     }
 
     public async Task<List<Draw>> GetAllDrawsAsync()
     {
         return await _context.Draws.Include(d => d.SerialNumber)
-                                   .ToListAsync();
+            .ToListAsync(); // there are 2 different tables for Draw and one for serial numbers
     }
 
     public async Task<Draw?> GetDrawByIdAsync(int id)

@@ -6,13 +6,13 @@
 @using Acme.API.Entities
 @using Acme.Shared.Dtos
 @using Acme.Web.Services
-<MudGrid Class="d-flex justify-center align-center mx-auto pa-4 mt-8" Style="width: 700px;" Elevation="0">
+<MudGrid Class="d-flex justify-center align-center mx-auto pa-4 mt-8" Style="width: 700px;" Elevation="0"><!--Submit form-->
     <MudItem xs="12">
         <MudCard Class="pa-4">
             <MudCardContent>
                 <MudText Typo="Typo.h2"> Submit a draw </MudText>
                 <MudForm @ref="form" model="@_newDraw">
-                    <MudTextField T="string" Label="FirstName" @bind-Value="_newDraw.FirstName" Required="true" RequiredError="First name is required!" Class="mt-3" HelperText="Enter your first name"/>
+                    <MudTextField T="string" Label="FirstName" @bind-Value="_newDraw.FirstName" Required="true" RequiredError="First name is required!" Class="mt-3" HelperText="Enter your first name"/> <!--Form validation-->
                     <MudTextField T="string" Label="LastName" @bind-Value="_newDraw.LastName" Required="true" RequiredError="Last name is required!" Class="mt-3" HelperText="Enter your last name"/>
                     <MudTextField T="string" Label="Email" @bind-Value="_newDraw.Email" Required="true" RequiredError="Email is required!"
                                    Validation="@(new EmailAddressAttribute() { ErrorMessage = "The email address is invalid" })" Class="mt-3" HelperText="Enter your email"/>
@@ -28,9 +28,9 @@
 
 @code {
     MudForm form = new MudForm();
-    private readonly DrawCreateDto _newDraw = new();
+    private readonly DrawCreateDto _newDraw = new(); // define a new draw
     
-    protected override void OnInitialized()
+    protected override void OnInitialized() // It is used for demonstartion not in actual code
     {
         // this part generates the guid to not write yourself
         _newDraw.SerialNumber = new SerialNumberCreateDto() { Guid = Guid.NewGuid() }; 
@@ -40,8 +40,8 @@
     {
         try
         {
-            await DrawService.CreateDrawAsync(_newDraw);
-            NavigationManager.NavigateTo($"/AllDraws",true);
+            await DrawService.CreateDrawAsync(_newDraw); 
+            NavigationManager.NavigateTo($"/AllDraws",true); // redirects the user to AllDraws
         }
         catch (Exception e)
         {
