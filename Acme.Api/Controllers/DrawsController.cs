@@ -26,7 +26,8 @@ public class DrawsController : ControllerBase
     {
         var draw = _mapper.Map<Draw>(drawCreateDto);
         var createdDraw = await _drawLogic.CreateDrawAsync(draw);
-        return Created($"/Draws/{createdDraw.Id}",createdDraw);
+        var createdDrawDto = _mapper.Map<DrawReadDto>(createdDraw);
+        return Created($"/Draws/{createdDrawDto.Id}",createdDrawDto);
     }
 
     [HttpGet]

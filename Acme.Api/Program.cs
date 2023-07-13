@@ -1,5 +1,6 @@
 using Acme.Api.Application;
 using Acme.Api.Application.Contracts;
+using Acme.Api.Controllers;
 using Acme.Api.Repositories;
 using Acme.Api.Repositories.Contracts;
 using AcmeAPI.Data;
@@ -13,7 +14,10 @@ builder.Services.AddDbContext<AcmeOnlineDbContext>(opt =>
 builder.Services.AddScoped<IDrawRepository, DrawRepository>();
 builder.Services.AddScoped<IDrawLogic, DrawLogic>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add<GlobalExceptionFilterAttribute>();
+});
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
